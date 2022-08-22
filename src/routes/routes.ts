@@ -1,7 +1,13 @@
 import { defineAsyncComponent } from 'vue';
 import { RouteRecordRaw } from 'vue-router';
 
-const routes :Array<RouteRecordRaw>= [];
+const routes :Array<RouteRecordRaw>= [
+    {
+        
+        path: "/",
+        component: () => defineAsyncComponent (()=>import('../views/login/index.vue')),
+    }
+];
 const requireContext = import.meta.globEager("../views/**/*.vue")
 for (let fileName in requireContext) {
     let path = fileName.replace(new RegExp("../views"),"").replace(new RegExp("/index.vue"),"")
